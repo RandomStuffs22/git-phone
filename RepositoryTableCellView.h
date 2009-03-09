@@ -15,6 +15,8 @@
   IBOutlet UILabel *nameLabel;
   IBOutlet UILabel *ownerLabel;
   IBOutlet UILabel *lastCommitMessageLabel;
+  IBOutlet UILabel *lastCommitAuthornameLabel;
+  IBOutlet UILabel *lastCommitTimestampLabel;
   
   
   Repository *repository;
@@ -24,6 +26,8 @@
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *ownerLabel;
 @property (nonatomic, retain) UILabel *lastCommitMessageLabel;
+@property (nonatomic, retain) UILabel *lastCommitAuthornameLabel;
+@property (nonatomic, retain) UILabel *lastCommitTimestampLabel;
 @property (nonatomic, retain) Repository *repository;
 
 + (NSUInteger)cellHeight;

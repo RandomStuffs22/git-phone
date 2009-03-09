@@ -127,12 +127,10 @@
 		case 0: {
 			switch(indexPath.row) {
 				case 0: {
-					[repositoriesViewController.repositories release];
 					repositoriesViewController.repositories = [[Config instance] publicRepositories];
 					break;
 				}
 				case 1: {
-					[repositoriesViewController.repositories release];
 					repositoriesViewController.repositories = [[Config instance] privateRepositories];
 					break;
 				}

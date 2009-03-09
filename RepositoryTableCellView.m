@@ -11,7 +11,12 @@
 
 @implementation RepositoryTableCellView
 
-@synthesize iconImage, nameLabel, ownerLabel, lastCommitMessageLabel;
+@synthesize iconImage;
+@synthesize nameLabel;
+@synthesize ownerLabel;
+@synthesize lastCommitMessageLabel;
+@synthesize lastCommitAuthornameLabel;
+@synthesize lastCommitTimestampLabel;
 
 @synthesize repository;
 
@@ -40,6 +45,12 @@
   
   Commit *lastCommit = (Commit *)[repository.commits objectAtIndex:0];
   lastCommitMessageLabel.text = lastCommit.message;
+  lastCommitTimestampLabel.text = @"";
+  
+  if (lastCommit) 
+    lastCommitAuthornameLabel.text = [NSString stringWithFormat:@"By: %@", lastCommit.authorName];
+  else
+    lastCommitAuthornameLabel.text = @"";
 }
 
 - (void)dealloc {
