@@ -11,7 +11,7 @@
 
 @implementation RepositoryTableCellView
 
-@synthesize nameLabel;
+@synthesize iconImage, nameLabel, ownerLabel, lastCommitMessageLabel;
 
 @synthesize repository;
 
@@ -27,25 +27,19 @@
   return self;
 }
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-  if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
-    // Initialization code
-  }
-  return self;
-}
-
-- (void)setRepository:(Repository *)newRepository {
-  if (self.repository != newRepository) {
-    [repository release];
-    repository = [newRepository retain];
-  }
-  
-  [self layoutSubviews];
-}
-
 - (void)layoutSubviews {
   [super layoutSubviews];
+  
+  if ([repository.privateRepo boolValue])
+    iconImage.image = [UIImage imageNamed:@"private.png"];
+  else
+    iconImage.image = [UIImage imageNamed:@"public.png"];
+  
   nameLabel.text = self.repository.name;
+  ownerLabel.text = self.repository.owner;
+  
+  Commit *lastCommit = (Commit *)[self.repository.commits objectAtIndex:0];
+  lastCommitMessageLabel.text = lastCommit.message;
 }
 
 - (void)dealloc {
