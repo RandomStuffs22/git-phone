@@ -30,15 +30,18 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
+  // TODO: This needs to happen asynchronously.
+  //if ([repository.commits count] <= 0) [repository loadCommits];
+  
   if ([repository.privateRepo boolValue])
     iconImage.image = [UIImage imageNamed:@"private.png"];
   else
     iconImage.image = [UIImage imageNamed:@"public.png"];
   
-  nameLabel.text = self.repository.name;
-  ownerLabel.text = self.repository.owner;
+  nameLabel.text = repository.name;
+  ownerLabel.text = repository.owner;
   
-  Commit *lastCommit = (Commit *)[self.repository.commits objectAtIndex:0];
+  Commit *lastCommit = (Commit *)[repository.commits objectAtIndex:0];
   lastCommitMessageLabel.text = lastCommit.message;
 }
 
