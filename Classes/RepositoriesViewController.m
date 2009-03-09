@@ -63,7 +63,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RepoCommitsViewController *repoCommitsViewController = [[[RepoCommitsViewController alloc] initWithNibName:@"RepoCommitsView" bundle:nil] autorelease];
+  RepoCommitsViewController *repoCommitsViewController = [[[RepoCommitsViewController alloc] initWithNibName:@"RepoCommitsView" bundle:nil] autorelease];
 	Repository *repository = [repositories objectAtIndex:[indexPath row]];
 	
 	[repoCommitsViewController.repoCommits release];
@@ -79,7 +79,7 @@
 - (void)dealloc {
 	[repositories release];
 	[rootViewController release];
-    [super dealloc];
+  [super dealloc];
 }
 
 

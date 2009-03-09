@@ -30,9 +30,6 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
-  // TODO: This needs to happen asynchronously.
-  //if ([repository.commits count] <= 0) [repository loadCommits];
-  
   if ([repository.privateRepo boolValue])
     iconImage.image = [UIImage imageNamed:@"private.png"];
   else
@@ -46,7 +43,6 @@
 }
 
 - (void)dealloc {
-  NSLog(@"dealloc repo table cell");
   [repository release];
   [super dealloc];
 }
