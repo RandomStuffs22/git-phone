@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
-
+#import "RepositoryTableCellView.h"
 
 @interface RepositoriesViewController : UITableViewController {
 	RootViewController *rootViewController;
 	NSArray *repositories;
+  
+  IBOutlet RepositoryTableCellView *masterTableCell;
 }
 
 @property (nonatomic, retain) RootViewController *rootViewController;

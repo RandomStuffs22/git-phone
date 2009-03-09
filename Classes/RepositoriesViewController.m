@@ -16,47 +16,49 @@
 @synthesize repositories;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 	self.title = @"Repositories";
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+  // Release anything that's not essential, such as cached data
 }
 
 #pragma mark Table view methods
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return [RepositoryTableCellView cellHeight];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+  return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [repositories count];
+  return [repositories count];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"RepositoryCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    
-    // Set up the cell...
-	cell.text = [(Repository *)[repositories objectAtIndex:[indexPath row]] name];
-    return cell;
+  static NSString *CellIdentifier = @"RepositoryTableCellView";
+  
+  RepositoryTableCellView *cell = (RepositoryTableCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+    cell = [[[RepositoryTableCellView alloc] init] autorelease];
+  }
+  
+  // Set up the cell...
+	cell.repository = (Repository *)[repositories objectAtIndex:[indexPath row]];
+  return cell;
 }
 
 
