@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "git_phoneAppDelegate.h"
 #import "RepositoriesViewController.h"
+#import "AboutViewController.h"
 
 
 @implementation RootViewController
@@ -17,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.title = @"GitHub GitPhone";
+	self.title = @"GitHub Mobile";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +48,7 @@
 			break;
 		}
 		case 2: {
-			rows =  1;
+			rows =  2;
 			break;
 		}
 		case 3: {
@@ -88,8 +89,8 @@
 		case 1: {
 			switch(indexPath.row) {
 				case 0: {
-					cell.text = @"News Feed";
-					cell.image = [UIImage imageNamed:@"feed.png"];
+					cell.text = @"Local Repositories";
+					cell.image = [UIImage imageNamed:@"transmit_blue.png"];
 					break;
 				}
 			}
@@ -98,8 +99,13 @@
 		case 2: {
 			switch(indexPath.row) {
 				case 0: {
+					cell.text = @"News Feed";
+					cell.image = [UIImage imageNamed:@"feed.png"];
+					break;
+				}
+				case 1: {
 					cell.text = @"Search";
-					cell.image = [UIImage imageNamed:@"octocat_small.png"];
+					cell.image = [UIImage imageNamed:@"zoom.png"];
 					break;
 				}
 			}
@@ -108,7 +114,7 @@
 		case 3: {
 			switch(indexPath.row) {
 				case 0: {
-					cell.text = @"About GitHub GitPhone";
+					cell.text = @"About GitHub Mobile";
 					cell.image = [UIImage imageNamed:@"octocat_small.png"];
 					break;
 				}
@@ -121,10 +127,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	RepositoriesViewController *repositoriesViewController = [[[RepositoriesViewController alloc] initWithNibName:@"RepositoriesView" bundle:nil] autorelease];
   
 	switch(indexPath.section) {
 		case 0: {
+			RepositoriesViewController *repositoriesViewController = [[[RepositoriesViewController alloc] initWithNibName:@"RepositoriesView" bundle:nil] autorelease];
 			switch(indexPath.row) {
 				case 0: {
 					repositoriesViewController.repositories = [[Config instance] publicRepositories];
@@ -135,17 +141,50 @@
 					break;
 				}
 			}
+			repositoriesViewController.rootViewController = self;
+			[self.navigationController pushViewController:repositoriesViewController animated:YES];
+			[tableView deselectRowAtIndexPath:indexPath animated:YES];
 			break;
 		}
 		case 1: {
+			switch(indexPath.row) {
+				case 0: {
+					// LOCAL REPOS
+					break;
+				}
+			}
+			break;
+		}
+		case 2: {
+			switch(indexPath.row) {
+				case 0: {
+					// NEWS FEED
+					break;
+				}
+				case 1: {
+					// GITHUB SEARCH
+					break;
+				}
+			}
+			break;
+		}
+		case 3: {
+			switch(indexPath.row) {
+				case 0: {
+					// ABOUT PAGE
+					AboutViewController *aboutViewController = [[AboutViewController alloc] init];
+					//aboutViewController.rootViewController = self;
+					[self.navigationController pushViewController:aboutViewController animated:YES];
+					[tableView deselectRowAtIndexPath:indexPath animated:YES];					
+					break;
+				}
+			}
 			break;
 		}
 	}
 	
 	
-	repositoriesViewController.rootViewController = self;
-	[self.navigationController pushViewController:repositoriesViewController animated:YES];
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 
