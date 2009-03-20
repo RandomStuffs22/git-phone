@@ -34,6 +34,10 @@
 	return [NSString stringWithFormat:@"%@/api/v1/json", [[Config instance] baseURL]];
 }
 
+- (NSString *)baseAPIURLv2 {
+	return [NSString stringWithFormat:@"%@/api/v2/json", [[Config instance] baseURL]];
+}
+
 - (void)rememberCredentials {
   // Save current credentials to the defaults database
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -48,6 +52,13 @@
   [defaults setValue:nil forKey:@"GitHubToken"];
 }
 
+- (bool)hasLogin {
+	NSLog(@"uname: %@", [self gitHubUserName]);
+	return ([self gitHubUserName] != NULL) 
+			&& ([[self gitHubUserName] length] > 0)
+			&& ([self gitHubToken] != NULL)
+			&& ([[self gitHubToken] length] > 0);
+}
 
 - (void) dealloc {
 	[gitHubUserName release];

@@ -45,6 +45,12 @@
 		313A61190F74194900A6C9BC /* server.png in Resources */ = {isa = PBXBuildFile; fileRef = 313A61180F74194900A6C9BC /* server.png */; };
 		313A61420F741B0300A6C9BC /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 313A61410F741B0300A6C9BC /* AboutViewController.m */; };
 		31E9B3890F7436A30072F5C9 /* zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B3880F7436A30072F5C9 /* zoom.png */; };
+		31E9B3EC0F7443EF0072F5C9 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B3EB0F7443EF0072F5C9 /* user.png */; };
+		31E9B4070F7445D30072F5C9 /* git-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B4060F7445D30072F5C9 /* git-favicon.png */; };
+		31E9B4130F74479C0072F5C9 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B4120F74479C0072F5C9 /* email.png */; };
+		31E9B4150F7447A70072F5C9 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B4140F7447A70072F5C9 /* note.png */; };
+		31E9B4180F7447DC0072F5C9 /* book_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B4170F7447DC0072F5C9 /* book_open.png */; };
+		31E9B41B0F7448210072F5C9 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E9B41A0F7448210072F5C9 /* comment.png */; };
 		FA1DE9D10F65755600AC08A7 /* RepositoryTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1DE9D00F65755600AC08A7 /* RepositoryTableCellView.m */; };
 		FA1DEA2A0F657CEE00AC08A7 /* RepositoryTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1DEA290F657CEE00AC08A7 /* RepositoryTableCellView.xib */; };
 /* End PBXBuildFile section */
@@ -105,6 +111,12 @@
 		313A61400F741B0300A6C9BC /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		313A61410F741B0300A6C9BC /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		31E9B3880F7436A30072F5C9 /* zoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoom.png; sourceTree = "<group>"; };
+		31E9B3EB0F7443EF0072F5C9 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		31E9B4060F7445D30072F5C9 /* git-favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "git-favicon.png"; sourceTree = "<group>"; };
+		31E9B4120F74479C0072F5C9 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		31E9B4140F7447A70072F5C9 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
+		31E9B4170F7447DC0072F5C9 /* book_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_open.png; sourceTree = "<group>"; };
+		31E9B41A0F7448210072F5C9 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1DE9CF0F65755600AC08A7 /* RepositoryTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoryTableCellView.h; sourceTree = "<group>"; };
 		FA1DE9D00F65755600AC08A7 /* RepositoryTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryTableCellView.m; sourceTree = "<group>"; };
@@ -175,6 +187,12 @@
 		22FA50100F21349300709123 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				31E9B41A0F7448210072F5C9 /* comment.png */,
+				31E9B4170F7447DC0072F5C9 /* book_open.png */,
+				31E9B4140F7447A70072F5C9 /* note.png */,
+				31E9B4120F74479C0072F5C9 /* email.png */,
+				31E9B4060F7445D30072F5C9 /* git-favicon.png */,
+				31E9B3EB0F7443EF0072F5C9 /* user.png */,
 				31E9B3880F7436A30072F5C9 /* zoom.png */,
 				313A61180F74194900A6C9BC /* server.png */,
 				313A61130F74187600A6C9BC /* Default.png */,
@@ -351,6 +369,12 @@
 				313A61140F74187600A6C9BC /* Default.png in Resources */,
 				313A61190F74194900A6C9BC /* server.png in Resources */,
 				31E9B3890F7436A30072F5C9 /* zoom.png in Resources */,
+				31E9B3EC0F7443EF0072F5C9 /* user.png in Resources */,
+				31E9B4070F7445D30072F5C9 /* git-favicon.png in Resources */,
+				31E9B4130F74479C0072F5C9 /* email.png in Resources */,
+				31E9B4150F7447A70072F5C9 /* note.png in Resources */,
+				31E9B4180F7447DC0072F5C9 /* book_open.png in Resources */,
+				31E9B41B0F7448210072F5C9 /* comment.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

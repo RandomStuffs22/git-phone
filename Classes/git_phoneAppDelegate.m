@@ -10,7 +10,6 @@
 #import "RootViewController.h"
 #import "ConnectivityController.h"
 #import "ApplicationErrorViewController.h"
-#import "LoginViewController.h"
 
 @interface git_phoneAppDelegate()
 - (void) showError:(NSString *)errorMessage;
@@ -37,10 +36,6 @@
 	} 
 	
 	[self loadPreferences];
-	[self authenticate];
-	
-	//LOAD MAIN APP
-	[Repository loadAll];
 }
 
 
@@ -52,24 +47,6 @@
 	ApplicationErrorViewController *errorController = [[ApplicationErrorViewController alloc] initWithNibName:@"ApplicationError" bundle:nil];
 	[errorController setErrorMessage:errorMessage]; 
 	[[self window] addSubview:errorController.view];
-}
-
-- (void) loadLoginView {
-	LoginViewController *loginViewController = [[[LoginViewController alloc] initWithNibName:@"Login" bundle:nil] autorelease];
-	[window addSubview:[loginViewController view]];
-	[navigationController presentModalViewController:loginViewController animated:YES];
-
-}
-- (void) authenticate {
-	// Check if username is set
-	if ([[Config instance] gitHubUserName] == NULL || [[Config instance] gitHubToken] == NULL) {
-		[self loadLoginView];
-	} else {
-		if (![Connector didAuthenticateUser:[[Config instance] gitHubUserName] withToken:[[Config instance] gitHubToken]]) {
-			[self showAlert:@"Unable to auto-authenticate using the credentials saved in your settings." withTitle:@"Octocat FAIL"];
-			[self loadLoginView];
-		}
-	}
 }
 
 - (void) loadPreferences {	

@@ -13,11 +13,12 @@
 @interface RepositoriesViewController : UITableViewController {
 	RootViewController *rootViewController;
 	NSArray *repositories;
-  
-  IBOutlet RepositoryTableCellView *masterTableCell;
+	bool publicFlag;
+	IBOutlet RepositoryTableCellView *masterTableCell;
 }
 
 @property (nonatomic, retain) RootViewController *rootViewController;
 @property (nonatomic, retain) NSArray *repositories;
+@property(assign, readwrite) bool publicFlag;
 
 @end

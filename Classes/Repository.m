@@ -15,13 +15,16 @@
 
 @synthesize name;
 @synthesize owner;
+@synthesize description;
+@synthesize watchers;
+@synthesize forks;
 @synthesize privateRepo;
 @synthesize commits;
 
 + (NSString *)indexURL {	
 	
-	return [NSString stringWithFormat:@"%@/%@", 
-			[[Config instance] baseAPIURL],
+	return [NSString stringWithFormat:@"%@/repos/show/%@", 
+			[[Config instance] baseAPIURLv2],
 			[[Config instance] gitHubUserName]];
 }
 
@@ -41,12 +44,15 @@
 	NSMutableArray *repositories = [[[NSMutableArray alloc] init] autorelease];
 	
 	// GitHub JSON: {"user": {"repositories": [{repo1},{repo1}] }}
-	repositories = [[[resultJSON JSONValue] valueForKey:@"user"] valueForKey:@"repositories"];
+	repositories = [[resultJSON JSONValue] valueForKey:@"repositories"];
 	
 	for (NSDictionary *repository in repositories) {
 		Repository *tempRepo = [[[Repository alloc] init] autorelease];
 		[tempRepo setName:[repository valueForKey:@"name"]];
 		[tempRepo setOwner:[repository valueForKey:@"owner"]];
+		[tempRepo setDescription:[repository valueForKey:@"description"]];
+		[tempRepo setWatchers:[DataParser readInt:[repository valueForKey:@"watchers"]]];
+		[tempRepo setForks:[DataParser readInt:[repository valueForKey:@"forks"]]];
 		[tempRepo setPrivateRepo:[DataParser readInt:[repository valueForKey:@"private"]]];
 		
 		DevLog2(@"Loaded Repo: %@", [tempRepo name]);

@@ -33,24 +33,22 @@
 }
 
 - (void)layoutSubviews {
-  [super layoutSubviews];
-  
-  if ([repository.privateRepo boolValue])
-    iconImage.image = [UIImage imageNamed:@"private.png"];
-  else
-    iconImage.image = [UIImage imageNamed:@"public.png"];
-  
-  nameLabel.text = repository.name;
-  ownerLabel.text = repository.owner;
-  
-  Commit *lastCommit = (Commit *)[repository.commits objectAtIndex:0];
-  lastCommitMessageLabel.text = lastCommit.message;
-  lastCommitTimestampLabel.text = @"";
-  
-  if (lastCommit) 
-    lastCommitAuthornameLabel.text = [NSString stringWithFormat:@"By: %@", lastCommit.authorName];
-  else
-    lastCommitAuthornameLabel.text = @"";
+	[super layoutSubviews];
+
+	if ([repository.privateRepo boolValue])
+		iconImage.image = [UIImage imageNamed:@"private.png"];
+	else
+		iconImage.image = [UIImage imageNamed:@"public.png"];
+
+	nameLabel.text = repository.name;
+	ownerLabel.text = repository.owner;
+
+	//Commit *lastCommit = (Commit *)[repository.commits objectAtIndex:0];
+	// I removed last commit data from here, but didn't yet change the labels
+	
+	lastCommitMessageLabel.text = repository.description;
+	lastCommitAuthornameLabel.text = [NSString stringWithFormat:@"Watchers: %@, Forks: %@", repository.watchers, repository.forks];
+	lastCommitTimestampLabel.text = @"";
 }
 
 - (void)dealloc {

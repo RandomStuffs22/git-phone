@@ -9,15 +9,25 @@
 #import "RepositoriesViewController.h"
 #import "RepoCommitsViewController.h"
 
+// TODO : split (owned, collaborator, watched) - tabs?
 
 @implementation RepositoriesViewController
 
 @synthesize rootViewController;
 @synthesize repositories;
+@synthesize publicFlag;
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
+	[super viewDidLoad];
 	self.title = @"Repositories";
+	[Repository loadAll];
+	if(publicFlag) {
+		self.repositories = [[Config instance] publicRepositories];
+	} else {
+		self.repositories = [[Config instance] privateRepositories];
+	}
+	NSLog(@"Loaded");
+	// get repositories if we don't have them
 }
 
 
@@ -37,13 +47,13 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+	return 1; 
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [repositories count];
+	return [repositories count];
 }
 
 
@@ -57,13 +67,13 @@
   }
   
   // Set up the cell...
-	cell.repository = (Repository *)[repositories objectAtIndex:[indexPath row]];
+  cell.repository = (Repository *)[repositories objectAtIndex:[indexPath row]];
   return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  RepoCommitsViewController *repoCommitsViewController = [[[RepoCommitsViewController alloc] initWithNibName:@"RepoCommitsView" bundle:nil] autorelease];
+	RepoCommitsViewController *repoCommitsViewController = [[[RepoCommitsViewController alloc] initWithNibName:@"RepoCommitsView" bundle:nil] autorelease];
 	Repository *repository = [repositories objectAtIndex:[indexPath row]];
 	
 	[repoCommitsViewController.repoCommits release];
@@ -79,7 +89,7 @@
 - (void)dealloc {
 	[repositories release];
 	[rootViewController release];
-  [super dealloc];
+	[super dealloc];
 }
 
 
